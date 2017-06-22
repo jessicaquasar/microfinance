@@ -1,0 +1,65 @@
+<div class="container-menu">
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+    <md-icon>more_vert</md-icon>
+  </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item>
+      <md-icon>event_note</md-icon>
+      <span>Controle de Gastos</span>
+    </button>
+    <button md-menu-item>
+      <md-icon>attach_money</md-icon>
+      <span>Simulador de Previdência</span>
+    </button>
+    <button md-menu-item (click)="goLogin()">
+      <md-icon>exit_to_app</md-icon>
+      <span>Sair</span>
+    </button>
+  </md-menu>
+</div>
+
+<md-card class="pension">
+  <form #penForm="ngForm">
+    <p>Simulador de Previdência Privada</p>
+
+    <md-input-container class="input-full-width">
+      <input mdInput name="birthdate" placeholder="Data de Nascimento:" [textMask]="mask"
+             [(ngModel)]="pensionModel.birthdate" required>
+    </md-input-container>
+
+    <md-select id="gender" placeholder="Sexo:" name="gender" (change)="autoFillGender()"
+               [(ngModel)]="pensionModel.gender" required>
+      <md-option *ngFor="let gender of genders" [value]="gender.value">
+        {{gender.viewValue}}
+      </md-option>
+    </md-select>
+
+    <md-input-container class="input-full-width">
+      <input mdInput name="retired" placeholder="Idade da Aposentadoria:" [(ngModel)]="pensionModel.retired" required/>
+      <md-datepicker #retired></md-datepicker>
+    </md-input-container>
+
+    <md-select id="year" placeholder="Recebimento do Benefício:" name="year" [(ngModel)]="pensionModel.year"
+               required>
+      <md-option *ngFor="let year of years" [value]="year.value">
+        {{year.viewValue}}
+      </md-option>
+    </md-select>
+
+    <md-input-container class="input-full-width">
+      <input mdInput name="money" placeholder="Valor mensal pretendido (R$):"
+             currencyMask [options]="currency" [(ngModel)]="pensionModel.money"
+             required/>
+    </md-input-container>
+
+    <div id="btn-pension">
+      <button md-raised-button (click)="submit()">Simular
+      </button>
+    </div>
+  </form>
+</md-card>
+
+<md-card class="pension" id="simulator" *ngIf="pensionResult">
+  <p>Simulação</p>
+  <div>Para se aposentar nessas condições você precisa investir mensalmente<br/> o valor de R$ {{pensionResult}}</div>
+</md-card>

@@ -1,0 +1,40 @@
+.container-menu {
+    color: white;
+    padding: 10px 10px;
+    background-color: #023e68;
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+.pension {
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#btn-pension {
+    text-align: right;
+}
+
+p {
+    font-family: Helvetica;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#gender {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#year {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#simulator {
+    background-color: #fdfdba;
+}

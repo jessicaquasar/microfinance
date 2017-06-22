@@ -1,0 +1,19 @@
+<md-card class="login-card">
+  <img src="assets/images/logo.png" class="full-width"/>
+
+  <form #logForm="ngForm">
+    <md-input-container class="full-width">
+      <input mdInput placeholder="E-mail" type="email" name="email" [(ngModel)]="email"
+             pattern="[^@\s]+@[^@\s]+" required>
+    </md-input-container>
+
+    <md-input-container class="full-width">
+      <input mdInput placeholder="Password" type="password" name="password" [(ngModel)]="password"
+             pattern="[0-9]{6,12}" required>
+    </md-input-container>
+
+    <div class="login-btn">
+      <button md-raised-button [disabled]="!logForm.form.valid" (click)="submit()">Login</button>
+    </div>
+  </form>
+</md-card>
