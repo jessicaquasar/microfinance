@@ -1,0 +1,24 @@
+.login-card {
+    max-width: 300px;
+    margin: 30px auto 0;
+    box-shadow: 10px 10px 5px #888800 !important;
+    border-radius: 12px;
+    background-color: #023e68;
+}
+
+.login-btn {
+    text-align: right;
+}
+
+.login-logo {
+    padding-bottom: 50px;
+}
+
+.mat-input-container {
+    color: white;
+}
+
+:host /deep/
+.mat-input-placeholder {
+    color: rgba(255, 255, 255, .39);
+}
