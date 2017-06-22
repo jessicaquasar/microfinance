@@ -18,7 +18,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## API
-Before all set the correct URL in the main.ts file for prod environment.
+Before all set the correct URL in the environment.prod.ts file.
 
 `POST`: /simulator
 
