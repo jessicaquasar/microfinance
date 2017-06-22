@@ -26,7 +26,7 @@ export class LoginComponent {
     this.loginService.login(this.email, this.password)
       .subscribe(
         (success: Response) => console.log('success!'),
-        (errors: Response) => this.router.navigate(['/pension.ts']),
+        (errors: Response) => this.router.navigate(['/pension']),
         () => console.log('completed')
       )
   }
