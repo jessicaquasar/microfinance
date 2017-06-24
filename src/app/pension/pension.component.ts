@@ -18,24 +18,24 @@ export class PensionComponent {
   pensionModel: Pension = {}
   pensionResult: string
 
-  protected mask = {
+  mask = {
     mask: [/[1-3]{1}/, /[0-9]{1}/, '/', /[0-1]{1}/, /[0-9]{1}/, '/', /[1-2]{1}/, /0|9/, /[0-9]{1}/, /[0-9]{1}/],
     showMask: true
   }
 
-  protected currency = {
+  currency = {
     prefix: 'R$ ',
     thousands: '.',
     decimal: ',',
     align: 'left'
   }
 
-  protected genders = [
+  genders = [
     {value: 'male', viewValue: 'Masculino'},
     {value: 'female', viewValue: 'Feminino'}
   ]
 
-  protected years = [
+  years = [
     {value: 10, viewValue: 'Dez anos'},
     {value: 20, viewValue: 'Vinte anos'},
     {value: 30, viewValue: 'Trinta anos'},
