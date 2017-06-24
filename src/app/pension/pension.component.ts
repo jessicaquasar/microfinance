@@ -58,7 +58,7 @@ export class PensionComponent {
 
   goLogin() {
 
-    this.router.navigate(['/login.ts'])
+    this.router.navigate(['/login'])
   }
 
   submit() {
