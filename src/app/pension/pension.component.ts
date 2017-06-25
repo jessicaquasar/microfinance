@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
 import {Router} from '@angular/router'
 import {PensionService} from 'services/pension.service'
-import {Pension} from 'models/pension'
+import {Pension, PensionCreate} from 'models/pension'
 import {Response} from '@angular/http'
 
 @Component({
@@ -15,8 +15,8 @@ import {Response} from '@angular/http'
 
 export class PensionComponent {
 
-  pensionModel: Pension = {}
-  pensionResult: string
+  pensionCreate: PensionCreate = {}
+  pensionResult: Pension
 
   mask = {
     mask: [/[1-3]{1}/, /[0-9]{1}/, '/', /[0-1]{1}/, /[0-9]{1}/, '/', /[1-2]{1}/, /0|9/, /[0-9]{1}/, /[0-9]{1}/],
@@ -50,10 +50,10 @@ export class PensionComponent {
 
     let age = 60
 
-    if (this.pensionModel.gender === 'male')
+    if (this.pensionCreate.gender === 'male')
       age = 65
 
-    this.pensionModel.retired = age
+    this.pensionCreate.retired = age
   }
 
   goLogin() {
@@ -63,9 +63,9 @@ export class PensionComponent {
 
   submit() {
 
-    this.pensionService.simulator(this.pensionModel)
+    this.pensionService.simulator(this.pensionCreate)
       .subscribe(
-        (response: Response) => this.pensionResult = response.text(),
+        (response: Response) => this.pensionResult = response.json(),
         (error: Response) => console.log(error)
       )
   }

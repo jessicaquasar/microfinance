@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL: 'http://PROD_URL:PROD_PORT/api'
+  URL: 'http://backend-fatec.herokuapp.com/api'
 };

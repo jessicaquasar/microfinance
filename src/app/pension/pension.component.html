@@ -24,22 +24,22 @@
 
     <md-input-container class="input-full-width">
       <input mdInput name="birthdate" placeholder="Data de Nascimento:" [textMask]="mask"
-             [(ngModel)]="pensionModel.birthdate" required>
+             [(ngModel)]="pensionCreate.birthdate" required>
     </md-input-container>
 
     <md-select id="gender" placeholder="Sexo:" name="gender" (change)="autoFillGender()"
-               [(ngModel)]="pensionModel.gender" required>
+               [(ngModel)]="pensionCreate.gender" required>
       <md-option *ngFor="let gender of genders" [value]="gender.value">
         {{gender.viewValue}}
       </md-option>
     </md-select>
 
     <md-input-container class="input-full-width">
-      <input mdInput name="retired" placeholder="Idade da Aposentadoria:" [(ngModel)]="pensionModel.retired" required/>
+      <input mdInput name="retired" placeholder="Idade da Aposentadoria:" [(ngModel)]="pensionCreate.retired" required/>
       <md-datepicker #retired></md-datepicker>
     </md-input-container>
 
-    <md-select id="year" placeholder="Recebimento do Benefício:" name="year" [(ngModel)]="pensionModel.year"
+    <md-select id="year" placeholder="Recebimento do Benefício:" name="year" [(ngModel)]="pensionCreate.year"
                required>
       <md-option *ngFor="let year of years" [value]="year.value">
         {{year.viewValue}}
@@ -48,7 +48,7 @@
 
     <md-input-container class="input-full-width">
       <input mdInput name="money" placeholder="Valor mensal pretendido (R$):"
-             currencyMask [options]="currency" [(ngModel)]="pensionModel.money"
+             currencyMask [options]="currency" [(ngModel)]="pensionCreate.money"
              required/>
     </md-input-container>
 
@@ -61,5 +61,5 @@
 
 <md-card class="pension" id="simulator" *ngIf="pensionResult">
   <p>Simulação</p>
-  <div>Para se aposentar nessas condições você precisa investir mensalmente<br/> o valor de R$ {{pensionResult}}</div>
+  <div>Para se aposentar nessas condições você precisa investir mensalmente<br/> o valor de R$ {{pensionResult.monthlyContribution | number: '1.2-2'}}</div>
 </md-card>
