@@ -12,7 +12,15 @@ export interface Pension {
 }
 
 export interface PensionCreate {
-  birthdate?: Date
+  birthdate?: string
+  retired?: number
+  gender?: string
+  year?: string
+  money?: string
+}
+
+export interface PensionForm {
+  birthdate?: string
   retired?: number
   gender?: string
   year?: string

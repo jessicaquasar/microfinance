@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {HttpModule} from '@angular/http'
 import {BrowserModule} from '@angular/platform-browser'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -20,7 +20,8 @@ import {
   MdMenuModule,
   MdIconModule,
   MdSidenavModule,
-  MdSelectModule
+  MdSelectModule,
+  MdListModule
 } from '@angular/material'
 import {CurrencyMaskModule} from 'ng2-currency-mask'
 
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     PensionComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -65,6 +67,7 @@ const appRoutes: Routes = [
     MdMenuModule,
     MdIconModule,
     MdSidenavModule,
+    MdListModule,
     MdSelectModule,
     TextMaskModule,
     CurrencyMaskModule,

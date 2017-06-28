@@ -19,28 +19,27 @@
 </div>
 
 <md-card class="pension">
-  <form #penForm="ngForm">
-    <p>Simulador de Previdência Privada</p>
-
+  <form [formGroup]="pensionForm">
     <md-input-container class="input-full-width">
       <input mdInput name="birthdate" placeholder="Data de Nascimento:" [textMask]="mask"
-             [(ngModel)]="pensionCreate.birthdate" required>
+             [(ngModel)]="pensionCreate.birthdate" formControlName="birthdate" required>
     </md-input-container>
 
     <md-select id="gender" placeholder="Sexo:" name="gender" (change)="autoFillGender()"
-               [(ngModel)]="pensionCreate.gender" required>
+               [(ngModel)]="pensionCreate.gender" formControlName="gender" required>
       <md-option *ngFor="let gender of genders" [value]="gender.value">
         {{gender.viewValue}}
       </md-option>
     </md-select>
 
     <md-input-container class="input-full-width">
-      <input mdInput name="retired" placeholder="Idade da Aposentadoria:" [(ngModel)]="pensionCreate.retired" required/>
+      <input mdInput name="retired" placeholder="Idade da Aposentadoria:" [(ngModel)]="pensionCreate.retired"
+             formControlName="retired" required/>
       <md-datepicker #retired></md-datepicker>
     </md-input-container>
 
     <md-select id="year" placeholder="Recebimento do Benefício:" name="year" [(ngModel)]="pensionCreate.year"
-               required>
+               formControlName="year" required>
       <md-option *ngFor="let year of years" [value]="year.value">
         {{year.viewValue}}
       </md-option>
@@ -49,11 +48,11 @@
     <md-input-container class="input-full-width">
       <input mdInput name="money" placeholder="Valor mensal pretendido (R$):"
              currencyMask [options]="currency" [(ngModel)]="pensionCreate.money"
-             required/>
+             formControlName="money" required/>
     </md-input-container>
 
     <div id="btn-pension">
-      <button md-raised-button (click)="submit()" [disabled]="!penForm.form.valid">Simular
+      <button md-raised-button (click)="submit()" [disabled]="pensionForm.invalid">Simular
       </button>
     </div>
   </form>
@@ -61,5 +60,20 @@
 
 <md-card class="pension" id="simulator" *ngIf="pensionResult">
   <p>Simulação</p>
-  <div>Para se aposentar nessas condições você precisa investir mensalmente<br/> o valor de R$ {{pensionResult.monthlyContribution | number: '1.2-2'}}</div>
+  <div>Para se aposentar nessas condições você precisa investir mensalmente<br/> o valor de R$
+    {{pensionResult.monthlyContribution | number: '1.2-2'}}
+  </div>
+  <hr/>
+  <p>Histórico de Simulações</p>
+  <md-list>
+    <md-list-item *ngFor="let item of pensionList">
+      <md-icon md-list-icon>account_circle</md-icon><br/>
+      <md-icon md-list-icon>watch_later</md-icon>
+      <h4 md-line>Idade da aposentadoria: {{item.retired}} anos</h4>
+      <h4 md-line>Recebimento do benefício: {{item.year}} anos</h4>
+      <h4 md-line>Valor pretendido: R$ {{item.money}}</h4>
+      <h4 md-line>Valor a ser poupado mensalmente: R$ {{item.monthlyContribution}}</h4>
+      <h4 md-line>Data da simulação: {{item.created_at}}</h4>
+    </md-list-item>
+  </md-list>
 </md-card>

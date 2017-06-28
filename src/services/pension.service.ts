@@ -11,5 +11,8 @@ export class PensionService {
   simulator(pension: PensionCreate) {
     return this.rest.post('/simulator', pension)
   }
-}
 
+  list() {
+    return this.rest.get('/simulator')
+  }
+}
